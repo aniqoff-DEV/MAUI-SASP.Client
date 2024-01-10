@@ -96,7 +96,7 @@ namespace SASP.Client.DataServices
                 Debug.WriteLine($"Упс, ошибка: {ex}");
             }
 
-            return issues;
+            return issues.OrderBy(i => i.Title).ToList();
         }
 
         public Task<IssueDto> GetAsync()

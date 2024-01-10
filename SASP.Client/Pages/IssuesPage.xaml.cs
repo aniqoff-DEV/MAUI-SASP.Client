@@ -24,4 +24,16 @@ public partial class IssuesPage : ContentPage
     {
         SelectedText = ((Button)sender).Text;
     }
+
+    private async void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var currentIssues = await _issueDataService.GetAllAsync();
+
+        currentIssues = currentIssues.Where(i =>
+            i.Title.ToLower().Contains(SearchEntry.Text.ToLower()) ||
+            i.Catalog.ToLower().Contains(SearchEntry.Text.ToLower()))
+            .ToList();
+
+        IssuesDataView.ItemsSource = currentIssues.OrderBy(i => i.Title).ToList();
+    }
 }
