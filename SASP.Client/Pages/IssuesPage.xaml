@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SASP.Client.Pages.IssuesPage"
+             Title="Информация о печатных изданиях" BackgroundColor="#FAD7AC">
+
+    <StackLayout  Margin="40,45,40,0">
+        <Grid  Margin="0,0,0,10" MinimumWidthRequest="1130">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <HorizontalStackLayout Grid.Column="0">
+                <Button x:Name="NewspapersSortButton" Text="Газеты" CornerRadius="0" FontSize="18" Margin="10,0,0,0" Clicked="Button_Clicked"/>
+                <Button x:Name="MagazinesSortButton" Text="Журналы" CornerRadius="0" FontSize="18" Clicked="Button_Clicked"/>
+                <Button x:Name="BooksSortButton" Text="Книги" CornerRadius="0" FontSize="18" Clicked="Button_Clicked"/>
+                <Button x:Name="BrochuresSortButton" Text="Брошюры" CornerRadius="0" FontSize="18" Clicked="Button_Clicked"/>
+                <Button x:Name="LeafletsSortButton" Text="Листовки" CornerRadius="0" FontSize="18" Clicked="Button_Clicked"/>
+                <Button x:Name="CatalogsSortButton" Text="Каталоги" CornerRadius="0" FontSize="18" Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Entry Grid.Column="1" Keyboard="Text" BackgroundColor="White" Placeholder="Поиск..." FontFamily="Helvetica" FontSize="20"/>
+        </Grid>
+
+        <Grid Margin="12,0,0,3" MinimumWidthRequest="900">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Фотография" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="1"  BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Название" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="2" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Жанр" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="3" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Описание" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="4" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Цена" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+        </Grid>
+
+        <ListView x:Name="IssuesDataView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid Margin="0,0,0,5" MinimumWidthRequest="900">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="160"/>
+                                </Grid.RowDefinitions>
+
+                                <Frame Grid.Column="0" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="photo" FontSize="16" Padding="10" Margin="0"/>
+                                </Frame>
+
+                                <Frame Grid.Column="1"  BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding Title}" FontSize="16" Padding="10" Margin="0"/>
+                                </Frame>
+
+                                <Frame Grid.Column="2" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding Catalog}" FontSize="16" Padding="10" Margin="0"/>
+                                </Frame>
+
+                                <Frame Grid.Column="3" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding Description}" FontSize="16" Padding="10" Margin="0"/>
+                                </Frame>
+
+                                <Frame Grid.Column="4" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding Price}" FontSize="16" Padding="10" Margin="0"/>
+                                </Frame>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

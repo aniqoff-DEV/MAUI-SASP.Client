@@ -2,69 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SASP.Client.MainPage"
-             BackgroundColor="#FAD7AC">
+             BackgroundColor="#FAD7AC" Title="Home">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToIssuesPage" Order="Secondary" Text="Издания" Clicked="ToIssuesPage_Clicked"/>
+        <ToolbarItem Order="Secondary" Text="Подписки"/>
+        <ToolbarItem Order="Secondary" Text="Доставка"/>
+        <ToolbarItem Order="Secondary" Text="Отчет"/>
+    </ContentPage.ToolbarItems>
+
+   
 
     <ContentPage.Resources>
         <StyleSheet Source="/styles/mystyles.css" />
     </ContentPage.Resources>
-
-    <StackLayout  Margin="40,45,40,0">
-        <Grid  Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.75*"/>
-            </Grid.ColumnDefinitions>
-            
-            <HorizontalStackLayout Grid.Column="0">
-                
-            </HorizontalStackLayout>
-
-            <Entry Grid.Column="1" Keyboard="Text" BackgroundColor="White" Placeholder="Поиск..." FontFamily="Helvetica" FontSize="20"/>
-        </Grid>
-
-        <ListView x:Name="IssuesDataView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <Grid Margin="0,0,0,5" MinimumWidthRequest="900">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="160"/>
-                                </Grid.RowDefinitions>
-                                
-                                <Border Grid.Column="0" Stroke="Black" StrokeThickness="3" BackgroundColor="White">
-                                    <Label Text="photo" FontSize="16" Padding="10" Margin="0"/>
-                                </Border>
-
-                                <Border Grid.Column="1"  Stroke="Black" StrokeThickness="3" BackgroundColor="White">
-                                    <Label Text="{Binding Title}" FontSize="16" Padding="10" Margin="0"/>
-                                </Border>
-
-                                <Border Grid.Column="2" Stroke="Black" StrokeThickness="3" BackgroundColor="White">
-                                    <Label Text="{Binding Catalog}" FontSize="16" Padding="10" Margin="0"/>
-                                </Border>
-
-                                <Border Grid.Column="3" Stroke="Black" StrokeThickness="3" BackgroundColor="White">
-                                    <Label Text="{Binding Description}" FontSize="16" Padding="10" Margin="0"/>
-                                </Border>
-
-                                <Border Grid.Column="4" Stroke="Black" StrokeThickness="3" BackgroundColor="White">
-                                    <Label Text="{Binding Price}" FontSize="16" Padding="10" Margin="0"/>
-                                </Border>
-                            </Grid>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
-    </StackLayout>
-
 </ContentPage>

@@ -1,4 +1,5 @@
 ﻿
-/*.CellTable {
-    border: 1px solid #0070c9;
-}*/
+.CellTable {
+    border: 3px solid #0070c9;
+    background-color: aqua;
+}

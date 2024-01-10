@@ -1,24 +1,25 @@
-﻿using Microsoft.Maui.Controls;
-using SASP.Client.DataServices;
-using SASP.Client.Models;
+﻿using SASP.Client.Models;
+using SASP.Client.Pages;
 
 namespace SASP.Client;
 
 public partial class MainPage : ContentPage
 {
-    private readonly IRestDataService<Issue, IssueDto> _issueDataService;
-
-    public MainPage(IRestDataService<Issue, IssueDto> issueDataService)
+    public MainPage()
 	{
 		InitializeComponent();
-		_issueDataService = issueDataService;
 	}
 
-    protected async override void OnAppearing()
+    private async void ToIssuesPage_Clicked(object sender, EventArgs e)
     {
-        base.OnAppearing();
+        //await Navigation.PushAsync(new IssuesPage());
 
-        IssuesDataView.ItemsSource = await _issueDataService.GetAllAsync();
+        var navigationParametr = new Dictionary<string, object>
+        {
+            {nameof(Issue), new Issue()},
+            {nameof(IssueDto), new IssueDto() }
+        };
+        await Shell.Current.GoToAsync(nameof(IssuesPage), navigationParametr);
     }
 }
 

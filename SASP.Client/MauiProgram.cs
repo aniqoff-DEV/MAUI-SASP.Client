@@ -1,5 +1,6 @@
 ﻿using SASP.Client.DataServices;
 using SASP.Client.Models;
+using SASP.Client.Pages;
 
 namespace SASP.Client;
 
@@ -19,7 +20,7 @@ public static class MauiProgram
         builder.Services.AddHttpClient<IRestDataService<Issue, IssueDto>, IssueDataService>();
 
         builder.Services.AddSingleton<MainPage>();
-        //builder.Services.AddTransient<ManagerToDoPage>();
+        builder.Services.AddScoped<IssuesPage>();
 
         return builder.Build();
 	}
