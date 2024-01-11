@@ -68,9 +68,37 @@ namespace SASP.Client.DataServices
             return users.OrderBy(i => i.Name).ToList();
         }
 
-        public Task<UserDto> GetAsync()
+        public async Task<UserDto> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = new UserDto();
+
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            {
+                Debug.WriteLine("Нет доступа в интернет...");
+                return user;
+            }
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"{_url}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+
+                    user = JsonSerializer.Deserialize<UserDto>(content, _jsonSerializerOptions);
+                }
+                else
+                {
+                    Debug.WriteLine("Ответ не соответсвует http 2xx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Упс, ошибка: {ex}");
+            }
+
+            return user;
         }
 
         public Task UpdateAsync(User item)

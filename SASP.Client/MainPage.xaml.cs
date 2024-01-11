@@ -27,7 +27,13 @@ public partial class MainPage : ContentPage
         var navigationParametr = new Dictionary<string, object>
         {
             {nameof(Subscription), new Subscription()},
-            {nameof(SubscriptionDto), new SubscriptionDto() }
+            {nameof(SubscriptionDto), new SubscriptionDto() },
+
+            {nameof(Issue), new Issue()},
+            {nameof(IssueDto), new IssueDto() },
+
+            {nameof(User), new User()},
+            {nameof(UserDto), new UserDto() },
         };
 
         await Shell.Current.GoToAsync(nameof(SubscriptionsPage), navigationParametr);

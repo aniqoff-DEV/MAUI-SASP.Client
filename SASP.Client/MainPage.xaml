@@ -11,9 +11,4 @@
         <ToolbarItem Order="Secondary" Text="Отчет"/>
     </ContentPage.ToolbarItems>
 
-   
-
-    <ContentPage.Resources>
-        <StyleSheet Source="/styles/mystyles.css" />
-    </ContentPage.Resources>
 </ContentPage>

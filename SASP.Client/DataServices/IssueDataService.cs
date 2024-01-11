@@ -99,9 +99,37 @@ namespace SASP.Client.DataServices
             return issues.OrderBy(i => i.Title).ToList();
         }
 
-        public Task<IssueDto> GetAsync()
+        public async Task<IssueDto> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            var issue = new IssueDto();
+
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            {
+                Debug.WriteLine("Нет доступа в интернет...");
+                return issue;
+            }
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"{_url}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+
+                    issue = JsonSerializer.Deserialize<IssueDto>(content, _jsonSerializerOptions);
+                }
+                else
+                {
+                    Debug.WriteLine("Ответ не соответсвует http 2xx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Упс, ошибка: {ex}");
+            }
+
+            return issue;
         }
 
         public Task UpdateAsync(Issue item)

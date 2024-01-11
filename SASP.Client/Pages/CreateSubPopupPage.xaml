@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mauiPopup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
+             x:Class="SASP.Client.Pages.CreateSubPopupPage"
+                         VerticalOptions="Start"
+                         Margin="80" 
+                         BackgroundColor="Gray">
+
+
+    <VerticalStackLayout MinimumHeightRequest="400" MinimumWidthRequest="800" Padding="30">
+        <Label Text="Создание новой подписки" VerticalOptions="Center" HorizontalOptions="Center" FontSize="28"/>
+
+        <Label Text="Введите имя пользователя"
+               Margin="10" FontSize="18"/>
+        <Entry x:Name="UserNameEnry" Placeholder="Введите имя пользователя..."
+               Margin="10" FontSize="18" HorizontalOptions="Start" FontFamily="Helvetica"/>
+        
+        <Label Text="Выберите издание"
+               Margin="10" FontSize="18"/>
+        <Picker x:Name="IssuePicker" ItemDisplayBinding="{Binding Title}"
+                Margin="10" FontSize="18"/>
+
+        <Label Text="Укажите дату окончания подписки"
+               Margin="10" FontSize="18"/>
+        <DatePicker x:Name="EndSubDatePicker"
+            Margin="10" FontSize="18">
+            <DatePicker.MinimumDate>1/1/2022</DatePicker.MinimumDate>
+            <DatePicker.MaximumDate>12/31/2040</DatePicker.MaximumDate>
+        </DatePicker>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Column="0" x:Name="AccessCreate" Text="Создать" Clicked="AccessCreateButton_Clicked"
+                    VerticalOptions="Start" Margin="20" MaximumWidthRequest="600" MinimumWidthRequest="300" FontSize="20"/>
+            <Button Grid.Column="1" x:Name="Closed" Text="Отмена" Clicked="Closed_Clicked" 
+                    VerticalOptions="End" Margin="20" MaximumWidthRequest="600" MinimumWidthRequest="300" FontSize="20"/>
+        </Grid>
+
+    </VerticalStackLayout>
+
+</mauiPopup:BasePopupPage>

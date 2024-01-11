@@ -100,7 +100,7 @@ namespace SASP.Client.DataServices
             return subs.OrderBy(i => i.SubscriptionId).ToList();
         }
 
-        public Task<SubscriptionDto> GetAsync()
+        public Task<SubscriptionDto> GetAsync(int id)
         {
             throw new NotImplementedException();
         }

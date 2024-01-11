@@ -25,7 +25,7 @@ public partial class IssuesPage : ContentPage
         IssuesDataView.ItemsSource = await _issueDataService.GetAllAsync();
     }
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private void Button_Clicked(object sender, EventArgs e)
     {
         if(lastButton != null) 
         {
