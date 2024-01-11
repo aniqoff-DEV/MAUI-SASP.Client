@@ -4,11 +4,30 @@
              x:Class="SASP.Client.MainPage"
              BackgroundColor="#FAD7AC" Title="Home">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="ToIssuesPage" Order="Secondary" Text="Издания" Clicked="ToIssuesPage_Clicked"/>
-        <ToolbarItem x:Name="ToSubsPage" Order="Secondary" Text="Подписки" Clicked="ToSubsPage_Clicked"/>
-        <ToolbarItem Order="Secondary" Text="Доставка"/>
-        <ToolbarItem Order="Secondary" Text="Отчет"/>
-    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Label Text="Выберите окно:" FontSize="28" Margin="50"/>
+            
+        <HorizontalStackLayout Grid.Row="0" Margin="50">
+            <Button x:Name="ToIssuesPage" Text="Издания" Clicked="ToIssuesPage_Clicked"
+                    FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
+            <Button x:Name="ToSubsPage" Text="Подписки" Clicked="ToSubsPage_Clicked"
+                    FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
+            <Button x:Name="ToOrderHistroyPage" Text="Доставка"
+                    FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
+            <Button x:Name="ToReportsPage" Text="Отчет"
+                    FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
+        </HorizontalStackLayout>
+
+        <Label Grid.Row="1" Text="Последнии издания:" FontSize="28" Margin="50,0,0,0"/>
+        <StackLayout x:Name="ImagesContentView" Grid.Row="2" Margin="50">
+            
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

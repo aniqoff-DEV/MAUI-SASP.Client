@@ -1,4 +1,5 @@
-﻿using SASP.Client.Dtos;
+﻿using SASP.Client.DataServices;
+using SASP.Client.Dtos;
 using SASP.Client.Models;
 using SASP.Client.Pages;
 
@@ -6,10 +7,40 @@ namespace SASP.Client;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    private readonly IRestDataService<Issue, IssueDto> _issueDataService;
+
+    public MainPage(IRestDataService<Issue, IssueDto> issueDataService)
 	{
 		InitializeComponent();
-	}
+
+        _issueDataService = issueDataService;
+        LoadImagesOnContent();
+    }
+
+    private async void LoadImagesOnContent()
+    {
+        //TODO
+        //var issues = await _issueDataService.GetAllAsync();
+        //List<Image> images = new List<Image>();
+
+        //foreach (var issue in issues)
+        //{
+        //    if(issue.Photo != null && issue.Photo != string.Empty)
+        //    {
+        //        Image image = new Image
+        //        {
+        //            Source = issue.Photo
+        //        };
+
+        //        images.Add(image);
+        //    }
+        //}
+
+        //ImagesContentView = new StackLayout()
+        //{
+        //    Children = { images[0] }
+        //};
+    }
 
     private async void ToIssuesPage_Clicked(object sender, EventArgs e)
     {
