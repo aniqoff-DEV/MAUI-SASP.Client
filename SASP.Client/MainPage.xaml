@@ -6,7 +6,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ToIssuesPage" Order="Secondary" Text="Издания" Clicked="ToIssuesPage_Clicked"/>
-        <ToolbarItem Order="Secondary" Text="Подписки"/>
+        <ToolbarItem x:Name="ToSubsPage" Order="Secondary" Text="Подписки" Clicked="ToSubsPage_Clicked"/>
         <ToolbarItem Order="Secondary" Text="Доставка"/>
         <ToolbarItem Order="Secondary" Text="Отчет"/>
     </ContentPage.ToolbarItems>

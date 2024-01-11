@@ -37,15 +37,15 @@ public partial class IssuesPage : ContentPage
 
         ((Button)sender).BackgroundColor = Colors.Blue;
 
-        IssuesSource();
+        SortingIssues();
     }
 
     private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
-        IssuesSource();
+        SortingIssues();
     }
 
-    private async void IssuesSource()
+    private async void SortingIssues()
     {
         var currentIssues = await _issueDataService.GetAllAsync();
 
