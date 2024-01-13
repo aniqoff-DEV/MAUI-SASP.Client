@@ -11,6 +11,15 @@
                 <ColumnDefinition Width="0.75*"/>
             </Grid.ColumnDefinitions>
 
+            <Picker x:Name="OrderFilter" Grid.Column="0" BackgroundColor="White" HorizontalOptions="Start" Margin="10,0,0,0"  WidthRequest="200"
+                    SelectedIndexChanged="OrderFilter_SelectedIndexChanged" SelectedIndex="0">
+                <Picker.Items>
+                    <x:String>Без фильтра</x:String>
+                    <x:String>В процессе</x:String>
+                    <x:String>В пути</x:String>
+                    <x:String>Доставлено</x:String>
+                </Picker.Items>
+            </Picker>
             <Entry x:Name="SearchEntry" Grid.Column="1" Keyboard="Text" BackgroundColor="White" Placeholder="Поиск..." FontFamily="Helvetica" FontSize="20" TextChanged="SearchEntry_TextChanged"/>
         </Grid>
 

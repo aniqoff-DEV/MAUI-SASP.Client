@@ -76,4 +76,22 @@ public partial class OrderHistoryPage : ContentPage
         Delivered = 3,
     }
 
+    private async void OrderFilter_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+        string currentFilter = (string)OrderFilter.SelectedItem;
+
+        var orders = await _orderDataService.GetAllAsync();
+                
+        var sortOrders = orders.Where(o => o.Status == currentFilter);
+
+        if(currentFilter != "Без фильтра")
+        {
+            OrderView.ItemsSource = sortOrders;
+        }
+        else
+        {
+            OrderView.ItemsSource = orders.OrderBy(i => i.OrderId).ToList();
+        }
+    }
 }
