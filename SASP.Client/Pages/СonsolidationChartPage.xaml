@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="SASP.Client.Pages.СonsolidationChartPage"
+             Title="Отчетность"  BackgroundColor="#FAD7AC">
+
+    <Border BackgroundColor="White" Stroke="white" Margin="20,50,20,0">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20,20,0,0" />
+        </Border.StrokeShape>
+        
+        <!--<ScrollView>
+            
+        </ScrollView>-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Общая статистика СУППИ"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="28"/>
+            <micro:ChartView x:Name="AllDataDonutChart" Grid.Row="1" Margin="10"/>
+            <micro:ChartView x:Name="PurchasedIssuesDataDonutChart" Grid.Row="2"/>
+            <micro:ChartView x:Name="CurrentIncomeChart" Grid.Row="3"/>
+            <micro:ChartView x:Name="FunnelChart" Grid.Row="4"/>
+        </Grid>
+    </Border>
+    
+
+</ContentPage>

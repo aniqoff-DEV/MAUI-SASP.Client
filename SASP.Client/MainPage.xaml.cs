@@ -69,5 +69,25 @@ public partial class MainPage : ContentPage
 
         await Shell.Current.GoToAsync(nameof(OrderHistoryPage), navigationParametr);
     }
+
+    private async void ToReportsPage_Clicked(object sender, EventArgs e)
+    {
+        var navigationParametr = new Dictionary<string, object>
+        {
+            {nameof(Subscription), new Subscription()},
+            {nameof(SubscriptionDto), new SubscriptionDto() },
+
+            {nameof(Issue), new Issue()},
+            {nameof(IssueDto), new IssueDto() },
+
+            {nameof(User), new User()},
+            {nameof(UserDto), new UserDto() },
+
+            {nameof(Order), new Order()},
+            {nameof(OrderDto), new OrderDto() }
+        };
+
+        await Shell.Current.GoToAsync(nameof(СonsolidationChartPage), navigationParametr);
+    }
 }
 
