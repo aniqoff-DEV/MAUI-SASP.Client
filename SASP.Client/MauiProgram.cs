@@ -21,10 +21,12 @@ public static class MauiProgram
         builder.Services.AddHttpClient<IRestDataService<Issue, IssueDto>, IssueDataService>();
         builder.Services.AddHttpClient<IRestDataService<Subscription, SubscriptionDto>, SubscriptionDataService>();
         builder.Services.AddHttpClient<IRestDataService<User, UserDto>, UserDataService>();
+        builder.Services.AddHttpClient<IOrderRestDataService, OrderDataService>();
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddScoped<IssuesPage>();
         builder.Services.AddScoped<SubscriptionsPage>();
+        builder.Services.AddTransient<OrderHistoryPage>();
 
         return builder.Build();
 	}

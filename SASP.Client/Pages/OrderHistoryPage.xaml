@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SASP.Client.Pages.OrderHistoryPage"
+             Title="История заказов" BackgroundColor="#FAD7AC">
+
+    <StackLayout  Margin="40,45,40,0">
+        <Grid  Margin="0,0,0,10" MinimumWidthRequest="1130">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry x:Name="SearchEntry" Grid.Column="1" Keyboard="Text" BackgroundColor="White" Placeholder="Поиск..." FontFamily="Helvetica" FontSize="20" TextChanged="SearchEntry_TextChanged"/>
+        </Grid>
+
+        <Grid Margin="12,0,0,3" MinimumWidthRequest="900">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="№" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="1"  BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Получатель" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="2" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Издание" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="3" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Дата оформления" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+
+            <Frame Grid.Column="4" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                <Label Text="Статус" FontSize="20" Padding="5" Margin="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Frame>
+        </Grid>
+
+        <ListView x:Name="OrderView"
+                  ItemSelected="OrderView_ItemSelected"
+                  SelectionMode="Single"
+                  SelectedItem="{Binding OrderDto}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid Margin="0,0,0,5" MinimumWidthRequest="900">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150"/>
+                                </Grid.RowDefinitions>
+
+                                <Frame Grid.Column="0" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding OrderId}" FontSize="20" Padding="10" Margin="0"
+                                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
+
+                                <Frame Grid.Column="1"  BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding User}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
+                                               FontSize="18" Padding="10,5,0,0" Margin="0"/>
+                                        <Label Text="{Binding Country}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
+                                               FontSize="18" Padding="10,5,0,0" Margin="0"/>
+                                        <Label Text="{Binding City}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
+                                               FontSize="18" Padding="10,5,0,0" Margin="0"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <Frame Grid.Column="2" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding Issue}" FontSize="18" Padding="10" Margin="0"/>
+                                </Frame>
+
+                                <Frame Grid.Column="3" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <Label Text="{Binding CreatedDate}" FontSize="18" Padding="10" Margin="0"/>
+                                </Frame>
+
+                                <Frame Grid.Column="4" BorderColor="Black" CornerRadius="0" BackgroundColor="White">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Status}" TextColor="Blue" TextTransform="Uppercase" HorizontalTextAlignment="Center" FontSize="18" Padding="10" Margin="0"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                                
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

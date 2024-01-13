@@ -17,29 +17,18 @@ public partial class MainPage : ContentPage
         LoadImagesOnContent();
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+
+    }
+
     private async void LoadImagesOnContent()
     {
-        //TODO
-        //var issues = await _issueDataService.GetAllAsync();
-        //List<Image> images = new List<Image>();
+        var issues = await _issueDataService.GetAllAsync();
 
-        //foreach (var issue in issues)
-        //{
-        //    if(issue.Photo != null && issue.Photo != string.Empty)
-        //    {
-        //        Image image = new Image
-        //        {
-        //            Source = issue.Photo
-        //        };
-
-        //        images.Add(image);
-        //    }
-        //}
-
-        //ImagesContentView = new StackLayout()
-        //{
-        //    Children = { images[0] }
-        //};
+        ImagesIssueView.ItemsSource = issues.Where(i => i.Photo != string.Empty);
     }
 
     private async void ToIssuesPage_Clicked(object sender, EventArgs e)
@@ -68,6 +57,17 @@ public partial class MainPage : ContentPage
         };
 
         await Shell.Current.GoToAsync(nameof(SubscriptionsPage), navigationParametr);
+    }
+
+    private async void ToOrderHistroyPage_Clicked(object sender, EventArgs e)
+    {
+        var navigationParametr = new Dictionary<string, object>
+        {
+            {nameof(Order), new Order()},
+            {nameof(OrderDto), new OrderDto() }
+        };
+
+        await Shell.Current.GoToAsync(nameof(OrderHistoryPage), navigationParametr);
     }
 }
 

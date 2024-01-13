@@ -7,7 +7,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
@@ -18,16 +18,27 @@
                     FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
             <Button x:Name="ToSubsPage" Text="Подписки" Clicked="ToSubsPage_Clicked"
                     FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
-            <Button x:Name="ToOrderHistroyPage" Text="Доставка"
+            <Button x:Name="ToOrderHistroyPage" Text="Доставка" Clicked="ToOrderHistroyPage_Clicked"
                     FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
             <Button x:Name="ToReportsPage" Text="Отчет"
                     FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
         </HorizontalStackLayout>
 
         <Label Grid.Row="1" Text="Последнии издания:" FontSize="28" Margin="50,0,0,0"/>
-        <StackLayout x:Name="ImagesContentView" Grid.Row="2" Margin="50">
-            
-        </StackLayout>
+        
+            <ListView x:Name="ImagesIssueView" Grid.Row="2" Margin="50">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                            <FlexLayout Direction="Row" Wrap="Wrap">
+                                <Image WidthRequest="200" HeightRequest="200" Source="{Binding Photo}" Margin="0"/>                                
+                            </FlexLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
     </Grid>
 
 </ContentPage>
