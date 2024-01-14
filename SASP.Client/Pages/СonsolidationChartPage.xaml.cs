@@ -69,7 +69,7 @@ public partial class СonsolidationChartPage : ContentPage
             },
         };
 
-        AllDataDonutChart.Chart = new LineChart
+        AllDataLineChart.Chart = new LineChart
 		{
 			Entries = allEntries
         };
@@ -162,7 +162,7 @@ public partial class СonsolidationChartPage : ContentPage
             }
         };
 
-        FunnelChart.Chart = new BarChart
+        FunnelBarChart.Chart = new BarChart
         {
             Entries = funnelEntries
         };

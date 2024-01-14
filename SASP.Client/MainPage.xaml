@@ -11,9 +11,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <Label Text="Выберите окно:" FontSize="28" Margin="50"/>
+        <Label Text="Выберите окно:" FontSize="34" Margin="65,50,0,0"/>
             
-        <HorizontalStackLayout Grid.Row="0" Margin="50">
+        <HorizontalStackLayout Grid.Row="0" Margin="65,0,0,30">
             <Button x:Name="ToIssuesPage" Text="Издания" Clicked="ToIssuesPage_Clicked"
                     FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
             <Button x:Name="ToSubsPage" Text="Подписки" Clicked="ToSubsPage_Clicked"
@@ -24,16 +24,31 @@
                     FontSize="22" Margin="0, 10 ,10, 0" VerticalOptions="End" WidthRequest="220"/>
         </HorizontalStackLayout>
 
-        <Label Grid.Row="1" Text="Последнии издания:" FontSize="28" Margin="50,0,0,0"/>
+        <Label Grid.Row="1" Text="Последние издания:" FontSize="34" Margin="65,0,0,0"/>
         
             <ListView x:Name="ImagesIssueView" Grid.Row="2" Margin="50">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                            <FlexLayout Direction="Row" Wrap="Wrap">
-                                <Image WidthRequest="200" HeightRequest="200" Source="{Binding Photo}" Margin="0"/>                                
-                            </FlexLayout>
+                            <Border BackgroundColor="White" Padding="30">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <HorizontalStackLayout Margin="20">
+                                    <Frame CornerRadius="25" WidthRequest="200" BackgroundColor="Bisque" Margin="0,0,10,0">
+                                        <Image Source="{Binding Photo}" Margin="0" Aspect="AspectFill"/>                                        
+                                    </Frame>
+                                    <VerticalStackLayout HorizontalOptions="Center">
+                                        <Label Text="{Binding Title}" FontSize="28" Margin="10"/>
+                                        <Label Text="{Binding Description}" Margin="10"
+                                                TextColor="Gray" FontSize="20"/>
+                                        <Label Text="{Binding Price}" HorizontalTextAlignment="End" Margin="10"
+                                                FontSize="20" FontFamily="Verdana" TextColor="Green" FontAttributes="Bold"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Border>
+                            
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

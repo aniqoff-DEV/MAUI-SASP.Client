@@ -69,15 +69,13 @@ public partial class CreateSubPopupPage : BasePopupPage
                 }
                 else
                 {
-                    var price = PriceCalculation(currentIssue.Price, endSub, startSub);
-
                     var newSub = new Subscription
                     {
                         IssueId = currentIssue.IssueId,
                         UserId = currentUser.UserId,
                         StartSub = startSub,
                         EndSub = endSub,
-                        Price = price
+                        Price = issue.Price
                     };
 
                     try
@@ -103,11 +101,4 @@ public partial class CreateSubPopupPage : BasePopupPage
 
         return currentUser;
     }
-
-    private decimal PriceCalculation(decimal priceNow, DateTime endSub, DateTime startSub)
-    {
-        decimal price = priceNow * (1 + 1 / (endSub.Day - startSub.Day)) * (decimal)1.01 + (decimal)1.18;
-        return price;
-    }
-
 }

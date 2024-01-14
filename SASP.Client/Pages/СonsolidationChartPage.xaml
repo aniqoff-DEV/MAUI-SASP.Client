@@ -5,31 +5,33 @@
              x:Class="SASP.Client.Pages.СonsolidationChartPage"
              Title="Отчетность"  BackgroundColor="#FAD7AC">
 
-    <Border BackgroundColor="White" Stroke="white" Margin="20,50,20,0">
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="20,20,0,0" />
-        </Border.StrokeShape>
-        
-        <!--<ScrollView>
-            
-        </ScrollView>-->
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Text="Общая статистика СУППИ"
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="28"/>
-            <micro:ChartView x:Name="AllDataDonutChart" Grid.Row="1" Margin="10"/>
-            <micro:ChartView x:Name="PurchasedIssuesDataDonutChart" Grid.Row="2"/>
-            <micro:ChartView x:Name="CurrentIncomeChart" Grid.Row="3"/>
-            <micro:ChartView x:Name="FunnelChart" Grid.Row="4"/>
-        </Grid>
-    </Border>
-    
+
+    <ScrollView>
+        <Frame Margin="30" BackgroundColor="#512BD4">
+            <VerticalStackLayout Margin="20">
+                <Label Text="Общая статистика СУППИ" TextColor="White" Padding="0,0,0,20"
+                            HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="36"/>
+
+                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="25" Margin="30,0,30,10">
+                    <micro:ChartView x:Name="CurrentIncomeChart" HeightRequest="500" />
+                </Frame>
+                
+                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="25" Margin="30,0,30,10">
+                    <micro:ChartView x:Name="AllDataLineChart" HeightRequest="500" VerticalOptions="Center"/>
+                </Frame>
+
+                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="25" Margin="30,0,30,10">
+                    <micro:ChartView x:Name="PurchasedIssuesDataDonutChart" HeightRequest="500"/>
+                </Frame>                
+
+                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="25" Margin="30,0,30,10">
+                    <micro:ChartView x:Name="FunnelBarChart" HeightRequest="500"/>
+                </Frame>        
+                        
+            </VerticalStackLayout>            
+        </Frame>
+    </ScrollView>
+
 
 </ContentPage>
